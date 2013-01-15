@@ -1,0 +1,139 @@
+var currentPageId = "#searchPage";
+
+/**
+ * Inicializa todo tipo de componentes de la UI.
+ */
+$(document).ready(function() {
+	loadDialogs();
+	loadToolbar();
+	loadButtons();
+	loadEvents();
+});
+
+/**
+ * Inicializa la barra de herramientas.
+ */
+function loadToolbar() {
+	// Inicializa el botón de login.
+	// Al presionarlo, se muestra el diálogo de login.
+	$("#login").button({ icons: {primary: "ui-icon-home"}, text: "Entrar" })
+		.click(function() { showDialog("#loginDialog"); });
+}
+
+function showDialog(dialogId) {
+	$(dialogId).dialog('open');
+	return false;
+}
+
+function loadButtons() {
+	// Help button from Search page.
+	$("#help").button(
+		{ icons: {primary: "ui-icon-info"}, text: "Información" }
+	).click(function() {
+		$("#infoDialog").dialog('open');
+		return false;
+	});
+	
+	// Search button from Search page.
+	$("#search").button(
+		{ icons: {primary: "ui-icon-search"}, text: false }
+	).click(function () {
+		showNewPage("#searchPage");
+	});
+	
+	// 
+	$("#books").button(
+		{ icons: {primary: "ui-icon-bookmark"}, text: false }
+	).click(function () {
+		showNewPage("#bookPage");
+	});
+}
+
+/**
+ * Inicializa todos los diálogos a utilizar.
+ */
+function loadDialogs() {
+	$("#loginDialog").dialog(
+		{
+			autoOpen: false
+		}
+	);
+	$("#infoDialog").dialog( {autoOpen: false});
+	$('#borrowDialog').dialog({ autoOpen: false });
+}
+
+/**
+ *
+ */
+function showNewPage(pageId) {
+	if(currentPageId == pageId)
+		return false;
+
+	$(currentPageId).fadeOut("slow");
+	setTimeout(function() {
+		$(pageId).fadeIn("slow");
+	}, 700);
+	
+	currentPageId = pageId;
+}
+
+/**
+ *
+ */
+function loadEvents() {
+	$("#srch").submit(function(e) {
+		e.preventDefault();
+		
+		if ($("#keys").val() == '')
+			return false;
+		
+		$.post("control/search/response.php", $("#srch").serialize(),
+		function(data) {
+			if (data.length == 0) {
+				var msg = '<p class="ui-state-highlight ui-corner-all">'
+				msg += 'No se encontraron resultados</p>';
+				$('#result').empty().html(msg);
+				return;
+			}
+			var table = createResultTable(data);
+			$("#result").empty().html(table);
+		}, "json");
+	});
+	
+	$("#logFrm").submit(function event) {
+		event.preventDefault();
+		
+		if ($("#user").val() == '' || $("#pswd").val() == '') {
+			alert("Damn");
+			return false;
+		}
+		
+		return true;
+	}
+}
+
+/**
+ *
+ */
+function createResultTable(data) {
+	var html = "<table class='result'><thead><tr class='ui-state-default'>";
+	html += "<th>Clasificación</th><th>Código</th>";
+	html += "<th>ISBN</th><th>Título</th>";
+	html += "<th>Autor</th><th>Editorial</th>";
+	html += "<th>Edición</th><th>Disponibles</th>";
+	html += "</tr><tbody>"
+	for(i = 0; i < data.length; i++) {
+		html += "<tr>";
+		html += "<td>" + data[i].clmain + "." + data[i].clsub + "</td>";
+		html += "<td>" + data[i].code + "</td>";
+		html += "<td>" + data[i].isbn + "</td>";
+		html += "<td>" + data[i].title + "</td>";
+		html += "<td>" + data[i].author + "</td>";
+		html += "<td>" + data[i].editorial + "</td>";
+		html += "<td>" + data[i].edition + "</td>";
+		html += "<td>" + data[i].av + " / " + data[i].tt + "</td>";
+		html += "</tr>";
+	}
+	html += "</tbody></table>";
+	return html;
+}
