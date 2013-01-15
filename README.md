@@ -17,7 +17,7 @@ http://biblioteca.codemexico.net
 
 ### Creadores:
 
-*   Luis David Aguilar Carlos (ludwig9003@gmail.com)
+*   Luis David Aguilar Carlos
 *   Francisco Javier Ávila Piñón
 *   Juan Castillo Solís
 *   Santos Octavio De Lira Flores
@@ -26,7 +26,7 @@ http://biblioteca.codemexico.net
 
 ### Licencia:
 
-Copyright 2013 Luis David Aguilar Carlos
+Copyright 2013 Luis Aguilar Carlos
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
