@@ -1,13 +1,17 @@
-<div id="userPage" class="grid_12 alpha omega" style="display: none;">
-	<div class="grid_8 push_2" style="margin: 2em 0em;">
-		<table id="userData"></table>
-		<div id="userPager"></div>
-	</div>
-	<div class="control grid_5 push_3">
-		<button id="userNew">Nuevo</button>
-		<button id="userEdit">Editar</button>
-		<button id="userPass">Cambiar contraseña</button>
-	</div>
+<div id="userPage" style="display: none;">
+    <div class="row">
+	   <div class="span8 offset2" style="margin-top: 1em; margin-bottom: 1em;">
+		  <table id="userData"></table>
+		  <div id="userPager"></div>
+	   </div>
+    </div>
+    <div class="row">
+	   <div class="control span5 offset3">
+		  <button id="userNew">Nuevo</button>
+		  <button id="userEdit">Editar</button>
+		  <button id="userPass">Cambiar contraseña</button>
+	   </div>
+    </div>
 	<div id="userNewDialog" title="Nuevo usuario">
 		<p id="nusError"></p>
 		<form id="userNewForm">

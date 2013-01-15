@@ -11,7 +11,7 @@ if(count($result) > 0) {
     $_SESSION['active'] = true;
     $_SESSION['uid'] = $result[0]['iduser'];
     $_SESSION['unm'] = $result[0]['usfname'];
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 } else {
 	header('Location: ../../index.php?login=false');
 }

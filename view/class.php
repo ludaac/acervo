@@ -1,13 +1,16 @@
-<div id="classPage" class="grid_12 alpha omega" style="display: none;">
-	<div class="grid_8 push_2" style="margin: 2em auto;">
-		<table id="data"></table>
-		<div id="pager"></div>
-	</div>
-	<div class="clear"></div>
-	<div class="control grid_3 push_4">
-		<button id="new">Nueva</button>
-		<button id="modif">Modificar</button>
-	</div>
+<div id="classPage" style="display: none;">
+    <div class="row">
+	   <div class="span8 offset2" style="margin-top: 2em;">
+		  <table id="data"></table>
+		  <div id="pager"></div>
+	   </div>
+    </div>
+	<div class="row">
+	   <div class="control span3 offset4">
+		  <button id="new">Nueva</button>
+		  <button id="modif">Modificar</button>
+	   </div>
+    </div>
 	<div id="modClassDialog" title="Modificar clasificación">
 		<p id="mclassError"></p>
 		<form id="modClassForm" action=".">

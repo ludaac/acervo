@@ -1,22 +1,26 @@
-<div id="bookPage" class="grid_12 alpha omega" style="display: none;">
-	<div class="grid_7 push_2" style="margin: 2em 0em;">
-		<input id="bkeys" name="keys" type="text" style="width: 80%"/>
-		<button id="filBut">Filtrar</button>
-	</div>
-	<div class="clear"></div>
-	<div class="grid_12 alpha omega" style="margin: -1em 0em 2em 0em;">
-		<table id="bookData"></table>
-		<div id="bookPager"></div>
-	</div>
-	<div class="clear"></div>
-	<div class="control grid_9 push_1">
-		<button id="bookNew">Nuevo</button>
-		<button id="bookModif">Modificar</button>
-		<button id="bookCl">Clasificar</button>
-		<button id="bookAdd">Agregar ejemplares</button>
-		<button id="bookBorrow">Préstamo</button>
-		<button id="bookRemove">Eliminar título</button>
-	</div>
+<div id="bookPage" style="display: none;">
+    <div class="row">
+	   <div class="span7 offset2" style="margin-top: 1em; margin-bottom 1em;">
+		  <input id="bkeys" name="keys" type="text" style="width: 80%"/>
+		  <button id="filBut">Filtrar</button>
+	   </div>
+    </div>
+    <div class="row">
+	   <div class="span12">
+		  <table id="bookData"></table>
+		  <div id="bookPager"></div>
+	   </div>
+    </div>
+	<div class="row">
+	   <div class="control span9 offset1">
+		  <button id="bookNew">Nuevo</button>
+		  <button id="bookModif">Modificar</button>
+		  <button id="bookCl">Clasificar</button>
+		  <button id="bookAdd">Agregar ejemplares</button>
+		  <button id="bookBorrow">Préstamo</button>
+		  <button id="bookRemove">Eliminar título</button>
+	   </div>
+    </div>
 	<div id="modBookDialog" title="Modificar libro">
 		<p id="mbookError"></p>
 		<form id="modBookForm" action=".">

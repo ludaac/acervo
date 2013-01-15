@@ -13,16 +13,8 @@ form select {
 }
 
 div.control { 
-	margin-top: -1em;
+	margin-top: 1em;
 	padding-left: 2em;
-}
-
-div#inputSearch {
-	margin: 2em 0em;
-}
-
-div#actionSearch {
-	margin: -1em 0em 2em 0em;
 }
 
 div#actionSearch input[type="submit"] {
@@ -45,11 +37,6 @@ table.result tbody tr td {
 table.result tbody tr:hover {
 	background-color: rgb(223, 239, 252);
 	cursor: default;;
-}
-
-.container_12 {
-	background-color: white;
-	min-height: 600px;
 }
 
 .toolbar {

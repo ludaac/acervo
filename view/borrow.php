@@ -1,11 +1,15 @@
-<div id="borrowPage" class="grid_12 alpha omega" style="display: none;">
-	<div class="grid_12 alpha omega" style="margin: 2em 0em;">
-		<table id="borrowData"></table>
-		<div id="borrowPager"></div>
-	</div>
-	<div class="control grid_2 push_5">
-		<button id="borrowFree">Liberar</button>
-	</div>
+<div id="borrowPage" style="display: none;">
+    <div class="row">
+	   <div class="span12" style="margin-top:1em; margin-bottom: 1em;">
+		  <table id="borrowData"></table>
+		  <div id="borrowPager"></div>
+	   </div>
+    </div>
+    <div class="row">
+	   <div class="control span2 offset5">
+		  <button id="borrowFree">Liberar</button>
+        </div>
+    </div>
 </div>
 <script>
 	$("#borrowData").jqGrid({
