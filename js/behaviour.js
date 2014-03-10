@@ -96,13 +96,6 @@ function showDialog(dialogId) {
  *
  */
 function loadButtons() {
-	// Botón de ayuda.
-	$("#help").button(
-		{ icons: {primary: "ui-icon-info"}, text: "Información" }
-	).click(function() {
-		$("#infoDialog").dialog('open');
-		return false;
-	});
 	$("#date").datepicker({dateFormat: 'yy-mm-dd', showOn: "focus"});	
 }
 
@@ -179,7 +172,7 @@ function loadEvents() {
  var datos;
 function createResultTable(data) {
 	datos = data;
-	var html = "<table class='result'><thead><tr class='ui-state-default'>";
+	var html = "<table class='result table table-default'><thead><tr>";
 	html += "<th>Clasificación</th><th>Código</th>";
 	html += "<th>ISBN</th><th>Título</th>";
 	html += "<th>Autor</th><th>Editorial</th>";

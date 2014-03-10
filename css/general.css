@@ -22,23 +22,6 @@ div#actionSearch input[type="submit"] {
 	margin-right: 1em;
 }
 
-table.result {
-	border-collapse: collapse;
-	font-size: 0.9em;
-	width: 100%;
-	text-align: center;
-}
-
-table.result thead tr th,
-table.result tbody tr td {
-	padding: 0.2em 0em;
-}
-
-table.result tbody tr:hover {
-	background-color: rgb(223, 239, 252);
-	cursor: default;;
-}
-
 .toolbar {
 	padding: 0.1em 0.2em;
 }
