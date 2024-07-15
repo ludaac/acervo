@@ -167,39 +167,65 @@ function loadEvents() {
 				$('#result').empty().html(msg);
 				return;
 			}
-			var table = createResultTable(data);
-			$("#result").empty().html(table);
 		}, "json");
+		bc.fetch({
+			'success': function(collection, response, options) {
+				bv.render();
+			},
+			'error': function(c, r, o) {
+				alert("No results");
+			}
+		});
 	});
 }
 
-/**
- *
- */
- var datos;
-function createResultTable(data) {
-	datos = data;
-	var html = "<table class='result'><thead><tr class='ui-state-default'>";
-	html += "<th>Clasificación</th><th>Código</th>";
-	html += "<th>ISBN</th><th>Título</th>";
-	html += "<th>Autor</th><th>Editorial</th>";
-	html += "<th>Edición</th><th>Disponibles</th>";
-	html += "</tr><tbody>"
-	for(i = 0; i < data.length; i++) {
-		html += "<tr>";
-		html += "<td>" + data[i].clmain + "." + data[i].clsub + "</td>";
-		html += "<td>" + data[i].code + "</td>";
-		if(data[i].isbn == null)
-			html += "<td></td>";
-		else
-			html += "<td>" + data[i].isbn + "</td>";
-		html += "<td>" + data[i].title + "</td>";
-		html += "<td>" + data[i].author + "</td>";
-		html += "<td>" + data[i].editorial + "</td>";
-		html += "<td>" + data[i].edition + "</td>";
-		html += "<td>" + data[i].av + " / " + data[i].tt + "</td>";
-		html += "</tr>";
+var BookModel = Backbone.Model.extend();
+
+var BookCollection = Backbone.Collection.extend({
+	url: 'control/search/response.php/book',
+	model: BookModel
+});
+
+var BookView = Backbone.View.extend({
+	el: "#result",
+
+	render: function() {
+		this.$el.empty();
+
+		if (this.collection.length == 0)
+			return this;
+
+		var template = '<table class="result">';
+		template += '<thead><tr class="ui-state-default">';
+		template += "<th>Clasificación</th><th>Código</th>"
+		template += "<th>ISBN</th><th>Título</th><th>Author</th>"
+		template += "<th>Editorial</th><th>Edición</th><th>Disponibles</th>";
+		template +=" </tr></thead>";
+		template += "<tbody>";
+		this.collection.each(function(model) {
+			template += "<tr>";
+			template += `<td>${model.get('clmain')}.${model.get('clsub')}</td>`;
+			template += `<td>${model.get('code')}</td>`;
+			template += `<td>${model.get('isbn')}</td>`
+			template += `<td>${model.get('title')}</td>`;
+			template += `<td>${model.get('author')}</td>`;
+			template += `<td>${model.get('editorial')}</td>`;
+			template += `<td>${model.get('edition')}</td>`;
+			template += `<td>${model.get('av')}/${model.get('tt')}</td>`;
+			template += "</tr>";
+		}, this);
+		template += "</tbody>";
+		template += "</table>";
+		this.$el.append(template);
+		return this;
 	}
-	html += "</tbody></table>";
-	return html;
-}
+});
+
+var bc = undefined;
+var bv = undefined;
+$(document).ready(function () {
+	bc = new BookCollection();
+	bv = new BookView({collection: bc});
+
+	bv.render();
+})

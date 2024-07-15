@@ -1,4 +1,4 @@
-<?php session_start(); header('Content-Type: text/html; charset=UTF-8'); ?>
+<?php session_start(); header('Content-Type: text/html; charset=UTF-8');?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +19,9 @@
 		<script src="js/jquery.jqGrid.min.js"></script>
 		<script src="js/grid.locale-es.js"></script>
 		<script src="js/jquery.validate.min.js"></script>
-		<script src="js/behaviour.js" type="text/javascript"></script>
+		<script src="https://unpkg.com/underscore@1.13.6/underscore-umd-min.js"></script>
+		<script src="js/backbone.min.js"></script>
+		<script src="js/behaviour.js"></script>
     </head>
     <body>
 		

@@ -191,6 +191,9 @@ class DBManager {
      * @return string 
      */
     public static function catchDBError($sqlstate) {
+        if ($sqlstate == null)
+            return STATEMENT_SUCCESS;
+
         $classVal = substr($sqlstate, 0, 2);
         if ($classVal == '00' || $sqlstate == '') {
             return STATEMENT_SUCCESS;
