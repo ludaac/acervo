@@ -19,6 +19,8 @@
 		<script src="js/jquery.jqGrid.min.js"></script>
 		<script src="js/grid.locale-es.js"></script>
 		<script src="js/jquery.validate.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/underscore@1.13.7/underscore-umd-min.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/backbone@1.6.0/backbone-min.min.js"></script>
 		<script src="js/behaviour.js" type="text/javascript"></script>
     </head>
     <body>
